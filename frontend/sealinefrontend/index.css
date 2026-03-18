@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto_SemiCondensed-ExtraBold.ttf");
+}
+body {
+  font-family: "Roboto";
+  background-color: rgb(37, 145, 192);
+  margin: 0;
+  padding: 0;
+}

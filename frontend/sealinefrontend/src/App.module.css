@@ -1,0 +1,42 @@
+body {
+  margin: 0px; /* restores the browser default spacing */
+}
+.container {
+  display: grid;
+
+  grid-template-columns: auto repeat(1, 1fr);
+  grid-template-rows: auto repeat(3, 1fr);
+  height: 100vh;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+.header {
+  grid-column: span 3;
+}
+.leftsidebar {
+  .container {
+    display: grid;
+
+    grid-template-columns: auto repeat(1, 1fr);
+    grid-template-rows: auto repeat(3, 1fr);
+    height: 100vh;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+
+  grid-column: span 1;
+  grid-row: span 4;
+  background-color: rgb(14, 71, 125);
+  width: 80px;
+}
+.mainbody {
+  grid-column: span 2;
+  grid-row: span 3;
+  background-color: #ffffff;
+  height: 100%;
+  width: 100%;
+}
