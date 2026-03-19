@@ -11,4 +11,11 @@ export const insertvendor = async (name) => {
     "INSERT INTO vendors(name) VALUES($1) RETURNING *",
     [name],
   );
+  return result.rows;
+};
+export const deletevendor = async (id) => {
+  const result = await pool.query(
+    "DELETE FROM vendors WHERE vendorid = $1 RETURNING *",
+    [id],
+  );
 };

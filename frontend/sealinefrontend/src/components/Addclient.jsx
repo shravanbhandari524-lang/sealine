@@ -21,6 +21,7 @@ export default function Adddem() {
       alert("Name is required ❌");
       return; // stop execution
     }
+    setconfcl(true);
 
     try {
       const payload = { name: advendor.name };
@@ -30,9 +31,9 @@ export default function Adddem() {
       );
       setadvendor((prev) => ({
         ...prev,
-        name: "",
+        vendorid: result.data[0].vendorid,
       }));
-      console.log("hi", result.data.success);
+      console.log(result.data[0].vendorid);
     } catch (err) {
       console.log({ err: err.message });
     }

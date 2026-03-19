@@ -53,7 +53,7 @@ export default function Adddem() {
           />
         </div>
 
-        <button onClick={handlesave}>save</button>
+        <button onClick={handleChange}>save</button>
       </div>
     </div>
   );

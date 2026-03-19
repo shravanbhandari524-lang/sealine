@@ -10,7 +10,7 @@ export const getAllvendors = async (req, res) => {
 export const insertvendor = async (req, res) => {
   try {
     const result = await vendors.insertvendor(req.body.name);
-    res.json({ success: true });
+    res.json(result);
   } catch (err) {
     res.status(500).json({ err: err.message });
   }
@@ -19,6 +19,15 @@ export const deleteallvendors = async (req, res) => {
   try {
     const result = await vendors.deleteallvendors();
     res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ err: err.message });
+  }
+};
+export const deletevendor = async (req, res) => {
+  try {
+    const result = await vendors.deletevendor(req.body.id);
+
+    res.json({ success: true, deleted: result });
   } catch (err) {
     res.status(500).json({ err: err.message });
   }
