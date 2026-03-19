@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { Userinputcontext } from "../context/Userinputcontext.jsx";
 import { Popupcontext } from "../context/Popupcontext";
 import Confclop from "./Confclpop.jsx";
+import axios from "axios";
+import aud from "../sound/f.mp3";
 export default function Adddem() {
   const { advendor, setadvendor } = useContext(Userinputcontext);
   const { confcl, setconfcl } = useContext(Popupcontext);
@@ -14,8 +16,38 @@ export default function Adddem() {
       [name]: value,
     }));
   };
-  const handleaddingcl = async () => {
-    setconfcl(true);
+  const handleaddingcl = async (e) => {
+    if (!advendor.name.trim()) {
+      alert("Name is required ❌");
+      return; // stop execution
+    }
+
+    try {
+      const payload = { name: advendor.name };
+      const result = await axios.post(
+        "http://127.0.0.1:5000/api/vendors/insertvendor",
+        payload,
+      );
+      setadvendor((prev) => ({
+        ...prev,
+        name: "",
+      }));
+      console.log("hi", result.data.success);
+    } catch (err) {
+      console.log({ err: err.message });
+    }
+  };
+  const deleteallvendor = async () => {
+    const audio = new Audio(aud);
+    audio.play();
+    try {
+      const result = await axios.get(
+        "http://127.0.0.1:5000/api/vendors/deleteall",
+      );
+      console.log(result.data.success);
+    } catch (err) {
+      console.log({ err: err.message });
+    }
   };
   return (
     <div className={styles.mbody}>
@@ -32,6 +64,10 @@ export default function Adddem() {
         </div>
         <button onClick={handleaddingcl} className={styles.btn}>
           save
+        </button>
+        <div style={{ height: "10px" }}></div>
+        <button onClick={deleteallvendor} className={styles.btn}>
+          deleteall
         </button>
       </div>
     </div>

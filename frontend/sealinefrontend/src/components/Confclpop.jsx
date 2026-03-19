@@ -15,38 +15,7 @@ export default function Confclop() {
 
   const confirm = async () => {
     const payload = { name: advendor.name };
-
-    try {
-      const res = await axios.post("http://localhost:5000/vendors", payload);
-
-      setadvendor((prev) => ({
-        ...prev,
-        vendorid: res.data,
-      }));
-
-      setconfcl(false);
-    } catch (err) {
-      console.log(err);
-    }
   };
-  const getnextval = async () => {
-    try {
-      const nextval = await axios.get("http://localhost:5000/nextval");
-      console.log(nextval.data);
-      setadvendor((prev) => ({
-        ...prev,
-        vendorid: nextval.data - 1,
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    if (confcl) {
-      getnextval();
-    }
-  }, [confcl]); // runs only when popup opens
 
   if (!confcl) return null;
 

@@ -1,6 +1,7 @@
 import styles from "./style/Adddem.module.css";
 import { useContext } from "react";
 import { Userinputcontext } from "../context/Userinputcontext.jsx";
+import axios from "axios";
 export default function Adddem() {
   const { dvendor, setdvendor } = useContext(Userinputcontext);
   const handleChange = (e) => {
@@ -11,6 +12,7 @@ export default function Adddem() {
       [name]: value,
     }));
   };
+
   return (
     <div className={styles.mbody}>
       <div className={styles.container} onClick={(e) => e.stopPropagation()}>
@@ -51,7 +53,7 @@ export default function Adddem() {
           />
         </div>
 
-        <button>save</button>
+        <button onClick={handlesave}>save</button>
       </div>
     </div>
   );
