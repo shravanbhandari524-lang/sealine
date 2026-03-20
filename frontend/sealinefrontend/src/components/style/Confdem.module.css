@@ -1,20 +1,80 @@
+/* ── Confirmation popup overlay ── */
 .popback {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(10, 37, 64, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 9998;
+  transition: all 0.25s ease;
 }
+
+/* ── Confirmation card ── */
 .container {
-  height: 190px;
-  width: 400px;
-  background-color: rgb(3, 84, 135);
+  height: auto;
+  min-height: 190px;
+  width: 420px;
+  max-width: 95%;
+  background-color: #ffffff;
   border-radius: 10px;
-  padding: 10px;
+  padding: 24px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 10px;
+  grid-template-rows: repeat(7, auto);
+  gap: 8px 16px;
+  box-shadow: 0 20px 50px rgba(10, 37, 64, 0.15);
+  color: #0c1e22;
+  z-index: 9999;
+}
+
+.container div {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #3d494d;
+  display: flex;
+  align-items: center;
+}
+
+.container div:nth-child(even) {
+  color: #0c1e22;
+  font-weight: 600;
+}
+
+/* ── Buttons inside confirmation card ── */
+.container button {
+  background-color: #61DAFB;
+  color: #005e71;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-transform: capitalize;
+  margin-top: 4px;
+}
+
+.container button:hover {
+  background-color: #21A1F1;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(33, 161, 241, 0.3);
+  transform: translateY(-1px);
+}
+
+.container button:active {
+  transform: translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 16px;
+  }
 }

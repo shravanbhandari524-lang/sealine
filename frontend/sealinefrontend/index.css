@@ -1,10 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @font-face {
   font-family: "Roboto";
   src: url("../fonts/Roboto_SemiCondensed-ExtraBold.ttf");
 }
+
+/* ── CSS Custom Properties ── */
+:root {
+  --primary: #61DAFB;
+  --primary-hover: #21A1F1;
+  --bg-light: #E6F9FF;
+  --bg-surface: #f0fbff;
+  --sidebar-bg: #0E477D;
+  --header-start: #0a2540;
+  --header-end: #0E477D;
+  --text-primary: #0c1e22;
+  --text-muted: #3d494d;
+  --border-subtle: rgba(188, 200, 205, 0.3);
+  --shadow-ambient: 0 12px 30px rgba(12, 30, 34, 0.06);
+  --shadow-sm: 0 2px 8px rgba(12, 30, 34, 0.06);
+  --radius: 8px;
+  --radius-sm: 6px;
+  --transition: all 0.25s ease;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Global Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-  font-family: "Roboto";
-  background-color: rgb(37, 145, 192);
+  font-family: var(--font-body);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
   margin: 0;
   padding: 0;
+  line-height: 1.5;
 }

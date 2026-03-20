@@ -2,14 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, rgb(6, 99, 181), rgb(2, 56, 104));
+  background: linear-gradient(135deg, #0a2540, #0E477D);
   color: white;
-  padding: 1rem;
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
+  padding: 1rem 2rem;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 700;
   font-size: 1.25rem;
-  letter-spacing: 1px;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 12px rgba(10, 37, 64, 0.15);
+  position: relative;
+  z-index: 10;
 }
