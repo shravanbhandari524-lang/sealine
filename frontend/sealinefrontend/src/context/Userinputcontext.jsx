@@ -10,6 +10,7 @@ export default function Userinputprovider({ children }) {
       imo: 0,
       date: "",
       vesselid: 0,
+      workforcesize: 0,
     },
   );
   const [svendor, setsvendor] = useState(
