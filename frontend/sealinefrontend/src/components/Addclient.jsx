@@ -4,13 +4,17 @@ import { Userinputcontext } from "../context/Userinputcontext.jsx";
 import { Popupcontext } from "../context/Popupcontext";
 import Confclop from "./Confclpop.jsx";
 import axios from "axios";
+
 import aud from "../sound/f.mp3";
+
 export default function Adddem() {
   const { advendor, setadvendor } = useContext(Userinputcontext);
-  const { confcl, setconfcl } = useContext(Popupcontext);
+  const { confcl, setconfcl, setplay } = useContext(Popupcontext);
+  const audio = new Audio(aud);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-
+    audio.play();
     setadvendor((prev) => ({
       ...prev,
       [name]: value,
@@ -39,8 +43,7 @@ export default function Adddem() {
     }
   };
   const deleteallvendor = async () => {
-    const audio = new Audio(aud);
-    audio.play();
+    setplay(true);
     try {
       const result = await axios.get(
         "http://127.0.0.1:5000/api/vendors/deleteall",
@@ -50,6 +53,7 @@ export default function Adddem() {
       console.log({ err: err.message });
     }
   };
+
   return (
     <div className={styles.mbody}>
       <Confclop />

@@ -8,6 +8,9 @@ export default function Popupcontextpr({ children }) {
   const [confcl, setconfcl] = useState(
     JSON.parse(localStorage.getItem("confcl")) || false,
   );
+  const [play, setplay] = useState(
+    JSON.parse(localStorage.getItem("confcl")) || false,
+  );
   const [confdem, setconfdem] = useState(
     JSON.parse(localStorage.getItem("confdem")) || false,
   );
@@ -22,6 +25,8 @@ export default function Popupcontextpr({ children }) {
     setconfcl,
     confdem,
     setconfdem,
+    play,
+    setplay,
   };
   return (
     <Popupcontext.Provider value={value}>{children}</Popupcontext.Provider>

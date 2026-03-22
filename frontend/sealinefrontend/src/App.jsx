@@ -4,11 +4,11 @@ import Header from "./components/Header";
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./components/Home.jsx";
 import Adminpage from "./components/Adminpage.jsx";
-
+import Video from "./components/Video.jsx";
 function App() {
   return (
     <div className={styles.container}>
-      {" "}
+      <Video />{" "}
       <div className={styles.header}>
         {" "}
         <Header />{" "}
