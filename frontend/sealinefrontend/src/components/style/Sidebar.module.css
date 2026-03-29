@@ -1,0 +1,14 @@
+/* ═══════════════════════════════════════════
+   Fluid Sidebar Container container
+═══════════════════════════════════════════ */
+.fluidSidebarContainer {
+  position: fixed;
+  left: 24px;
+  top: max(50vh - 150px, 80px); /* Center vertically but stay below header */
+  z-index: 200;
+  pointer-events: none; /* Let clicks pass through container */
+}
+
+.fluidSidebarContainer > div {
+  pointer-events: auto; /* Re-enable for the MenuContainer itself */
+}

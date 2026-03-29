@@ -1,55 +1,38 @@
 import styles from "./style/Mainbody.module.css";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { PlusCircle, Box, UserMinus, UserPlus } from "lucide-react";
+
 export default function Mainbody() {
   const navigate = useNavigate();
-  const handleclick = (e) => {
-    navigate("/Adminpage/" + e.target.name);
+  const location = useLocation();
+
+  const handleclick = (path) => {
+    navigate("/Adminpage/" + path);
   };
+
+  const navItems = [
+    { id: "adddem", label: "Add Dem", icon: PlusCircle },
+    { id: "addsup", label: "Add Supply Client", icon: Box },
+    { id: "delcl", label: "Delete Client", icon: UserMinus },
+    { id: "addcl", label: "Add Client", icon: UserPlus },
+  ];
+
   return (
     <div className={styles.container}>
-      <div></div>
-
-      <div className={styles.hcont}>
-        <button
-          name="adddem"
-          onClick={handleclick}
-          className={styles.headeritem}
-        >
-          add dem
-        </button>
-      </div>
-      <div className={styles.hcont}>
-        <button
-          name="addsup"
-          className={styles.headeritem}
-          onClick={handleclick}
-        >
-          Add supply client
-        </button>
-      </div>
-
-      <div className={styles.hcont}>
-        <button
-          name="delcl"
-          className={styles.headeritem}
-          onClick={handleclick}
-        >
-          Delte client
-        </button>
-      </div>
-
-      <div className={styles.hcont}>
-        <button
-          name="addcl"
-          className={styles.headeritem}
-          onClick={handleclick}
-        >
-          Add client :
-        </button>
-      </div>
-
-      <div></div>
+      {navItems.map(({ id, label, icon: Icon }) => {
+        const isActive = location.pathname.includes(id);
+        return (
+          <button
+            key={id}
+            onClick={() => handleclick(id)}
+            className={`${styles.actionBtn} ${isActive ? styles.active : ""}`}
+            title={label}
+          >
+            <Icon size={18} strokeWidth={2} />
+            <span>{label}</span>
+          </button>
+        );
+      })}
     </div>
   );
 }

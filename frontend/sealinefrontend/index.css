@@ -1,28 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
 
 @font-face {
   font-family: "Roboto";
   src: url("../fonts/Roboto_SemiCondensed-ExtraBold.ttf");
 }
 
-/* ── CSS Custom Properties ── */
+/* ── Marine Design System — CSS Custom Properties ── */
 :root {
-  --primary: #61DAFB;
-  --primary-hover: #21A1F1;
-  --bg-light: #E6F9FF;
-  --bg-surface: #f0fbff;
-  --sidebar-bg: #0E477D;
-  --header-start: #0a2540;
-  --header-end: #0E477D;
-  --text-primary: #0c1e22;
-  --text-muted: #3d494d;
-  --border-subtle: rgba(188, 200, 205, 0.3);
-  --shadow-ambient: 0 12px 30px rgba(12, 30, 34, 0.06);
-  --shadow-sm: 0 2px 8px rgba(12, 30, 34, 0.06);
-  --radius: 8px;
-  --radius-sm: 6px;
-  --transition: all 0.25s ease;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  /* ── Emerald Green palette ── */
+  --emerald-50:  #ecfdf5;
+  --emerald-100: #d1fae5;
+  --emerald-200: #a7f3d0;
+  --emerald-400: #34d399;
+  --emerald-500: #10b981;
+  --emerald:     #10b981;
+  --emerald-600: #059669;
+  --emerald-700: #047857;
+  --emerald-800: #065f46;
+  --emerald-900: #064e3b;
+
+  /* ── Dark Seafoam palette (replaces old blue) ── */
+  --sea-50:  #f0fdfa;
+  --sea-100: #ccfbf1;
+  --sea-200: #99f6e4;
+  --sea-400: #2dd4bf;
+  --sea-500: #14b8a6;
+  --sea:     #14b8a6;
+  --sea-600: #0d9488;
+  --sea-700: #0f766e;
+  --sea-800: #115e59; /* mild dark seafoam */
+  --sea-900: #134e4a; /* mild deep seafoam */
+
+  /* ── Teal accents (emerald-meets-sea) ── */
+  --teal-400: #2dd4bf;
+  --teal:     #14b8a6;
+  --teal-600: #0d9488;
+
+  /* ── Legacy tokens updated to marine palette ── */
+  --primary:        #10b981;
+  --primary-hover:  #059669;
+  --bg-light:       #f0fdf9;
+  --bg-surface:     #f8fffe;
+  --sidebar-bg:     #0f2744;
+  --header-start:   #0c2035;
+  --header-end:     #1e3a5f;
+  --text-primary:   #0f1c2e;
+  --text-muted:     #64748b;
+  --border-subtle:  rgba(16, 185, 129, 0.12);
+  --shadow-ambient: 0 12px 40px rgba(15, 28, 46, 0.08);
+  --shadow-sm:      0 2px 8px rgba(15, 28, 46, 0.06);
+  --shadow-card:    0 4px 24px rgba(15, 28, 46, 0.10);
+  --radius:         10px;
+  --radius-sm:      6px;
+  --radius-lg:      16px;
+  --transition:     all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-body:      'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* ── Extended palette tokens ── */
+  --sea-blue:       #115e59;
+  --sea-blue-dark:  #134e4a;
+  --sea-blue-light: #99f6e4;
+  --emerald-dark:   #047857;
+  --emerald-light:  #d1fae5;
+  --white:          #ffffff;
+
+  /* ── Glass ── */
+  --glass-bg:     rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+}
+
+/* ── Tailwind v4 Theme Interop ── */
+@theme {
+  --color-emerald-50: var(--emerald-50);
+  --color-emerald-100: var(--emerald-100);
+  --color-emerald-200: var(--emerald-200);
+  --color-emerald-400: var(--emerald-400);
+  --color-emerald-500: var(--emerald-500);
+  --color-emerald-600: var(--emerald-600);
+  --color-emerald-700: var(--emerald-700);
+  --color-emerald-800: var(--emerald-800);
+  --color-emerald-900: var(--emerald-900);
+
+  --color-sea-50: var(--sea-50);
+  --color-sea-100: var(--sea-100);
+  --color-sea-200: var(--sea-200);
+  --color-sea-400: var(--sea-400);
+  --color-sea-500: var(--sea-500);
+  --color-sea-600: var(--sea-600);
+  --color-sea-700: var(--sea-700);
+  --color-sea-800: var(--sea-800);
+  --color-sea-900: var(--sea-900);
 }
 
 /* ── Global Reset ── */
@@ -46,3 +115,9 @@ body {
   padding: 0;
   line-height: 1.5;
 }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(16,185,129,0.25); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(16,185,129,0.5); }

@@ -1,0 +1,421 @@
+/* ═══════════════════════════════════════════
+   Login Page — Marine Dashboard
+═══════════════════════════════════════════ */
+
+.loginPage {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface);
+  position: relative;
+  overflow: hidden;
+  /* Required since this overrides the App boundary layout */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.ambientGlow {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+  filter: blur(80px);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.card {
+  position: relative;
+  z-index: 10;
+  width: 1000px;
+  max-width: 95vw;
+  height: 600px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(12, 32, 53, 0.12), 
+              0 0 0 1px rgba(16, 185, 129, 0.1);
+  display: flex;
+  overflow: hidden;
+}
+
+/* ── LEFT PANEL: Form ── */
+.formPanel {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  scrollbar-width: none; /* Hide scrollbar for clean aesthetic */
+}
+
+.formPanel::-webkit-scrollbar {
+  display: none;
+}
+
+.formHeader {
+  margin-bottom: 40px;
+}
+
+.logoMark {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--emerald), var(--sea-400));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+}
+
+.formHeader h1 {
+  font-family: var(--font-body);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--sea-blue-dark);
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.formHeader p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--sea-blue);
+  letter-spacing: 0.02em;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 16px;
+  color: #94a3b8;
+  transition: color 0.3s ease;
+}
+
+.inputWrapper input {
+  width: 100%;
+  height: 48px;
+  padding: 0 40px 0 44px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.inputWrapper input:focus {
+  background: #fff;
+  border-color: var(--emerald-400);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+}
+
+.inputWrapper input:focus ~ .inputIcon,
+.inputWrapper input:not(:placeholder-shown) ~ .inputIcon {
+  color: var(--emerald);
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.passwordToggle:hover {
+  color: var(--sea-blue);
+}
+
+.formOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkboxLabel input {
+  display: none;
+}
+
+.checkboxCustom {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid #cbd5e1;
+  background: #fff;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkboxLabel input:checked + .checkboxCustom {
+  background: var(--emerald);
+  border-color: var(--emerald);
+}
+
+.checkboxLabel input:checked + .checkboxCustom::after {
+  content: "";
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  margin-bottom: 2px;
+}
+
+.forgotLink {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--sea-blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.forgotLink:hover {
+  color: var(--emerald);
+}
+
+.submitBtn {
+  margin-top: 12px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--sea-blue) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+  overflow: hidden;
+  position: relative;
+}
+
+.submitBtn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(16, 185, 129, 0.4);
+}
+
+.submitBtn:hover::after {
+  left: 150%;
+}
+
+.submitIcon {
+  transition: transform 0.2s ease;
+}
+
+.submitBtn:hover .submitIcon {
+  transform: translateX(4px);
+}
+
+.devOptions {
+  margin-top: auto;
+  text-align: center;
+  padding-top: 24px;
+  margin-bottom: 20px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.devOptions p {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.devBtn {
+  display: inline-flex;
+  padding: 8px 16px;
+  background: #f1f5f9;
+  color: var(--sea-blue);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.devBtn:hover {
+  background: #e2e8f0;
+  color: var(--sea-blue-dark);
+}
+
+/* ── RIGHT PANEL: Art / Marine Theme ── */
+.artPanel {
+  flex: 1.2;
+  background: linear-gradient(180deg, var(--sea-blue-dark) 0%, var(--sea-blue) 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.artOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.waveGroup {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.wave1, .wave2 {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  transform-origin: bottom;
+}
+
+.wave1 {
+  animation: waveMotion 15s linear infinite;
+  z-index: 2;
+}
+
+.wave2 {
+  animation: waveMotion 20s linear infinite reverse;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+@keyframes waveMotion {
+  0% { transform: translateX(0) scaleY(1); }
+  50% { transform: translateX(-25%) scaleY(1.1); }
+  100% { transform: translateX(-50%) scaleY(1); }
+}
+
+.artContent {
+  position: relative;
+  z-index: 10;
+  color: #fff;
+  max-width: 400px;
+  text-align: left;
+}
+
+.glassBadge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.artContent h2 {
+  font-family: var(--font-body);
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 16px 0;
+  background: linear-gradient(to right, #fff, var(--emerald-200));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.artContent p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .artPanel {
+    display: none;
+  }
+  .card {
+    max-width: 450px;
+    height: auto;
+    min-height: 500px;
+  }
+  .formPanel {
+    padding: 40px;
+  }
+}

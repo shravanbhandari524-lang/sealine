@@ -1,40 +1,40 @@
 import styles from "./App.module.css";
-import Header from "./components/Header";
-
-import { Routes, Route, Link } from "react-router-dom";
+import { Header } from "./components/ui/header-1";
+import Sidebar from "./components/Sidebar";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./components/Home.jsx";
 import Adminpage from "./components/Adminpage.jsx";
-import Video from "./components/Video.jsx";
+import Login from "./components/Login.jsx";
+
 function App() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login" || location.pathname === "/Login";
+
+  if (isLoginPage) {
+    return (
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/Login" element={<Login />} />
+      </Routes>
+    );
+  }
+
   return (
-    <div className={styles.container}>
-      <Video />{" "}
-      <div className={styles.header}>
-        {" "}
-        <Header />{" "}
-      </div>
-      <div className={styles.leftsidebar}>
-        <nav>
-          <Link
-            to="/"
-            style={{ display: "block", color: "white", textDecoration: "none" }}
-          >
-            home
-          </Link>
-          <Link
-            to="/Adminpage"
-            style={{ display: "block", color: "white", textDecoration: "none" }}
-          >
-            admin page
-          </Link>
-        </nav>
-      </div>
-      <div className={styles.mainbody}>
+    <div className={styles.root}>
+      {/* Premium Shadcn Header */}
+      <Header />
+
+      {/* Floating Fluid Menu Sidebar */}
+      <Sidebar />
+
+      {/* Main scrollable area */}
+      <main className={styles.main}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Adminpage/*" element={<Adminpage />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
-      </div>
+      </main>
     </div>
   );
 }
