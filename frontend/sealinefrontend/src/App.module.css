@@ -15,7 +15,8 @@
   min-height: 100vh;
   background: var(--bg-surface);
   overflow-x: hidden;
-  padding-left: 100px; /* Leave space for fluid sidebar floating on the left */
+  padding-left: 100px;
+  /* Leave space for fluid sidebar floating on the left */
   padding-right: 24px;
   padding-bottom: 24px;
   max-width: 1400px;
